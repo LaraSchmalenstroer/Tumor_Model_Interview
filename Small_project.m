@@ -46,5 +46,5 @@ ylabel('Amount species');
 tumor_total = sd(:,1) + sd(:,2);
 plot(sd(:,3), tumor_total);
 legend('tumor total')
-xlabel('Amount E1 cells');
+xlabel('Amount E1 cells');s
 ylabel('Amount tumor cells');
