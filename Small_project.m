@@ -1,8 +1,13 @@
+% create model 
 m = sbiomodel('small_project');
+
+% add species and their initial values to the model 
 s1 = addspecies(m, 'T1', 'InitialAmount', 8e7);
 s2 = addspecies(m, 'T2', 'InitialAmount', 2e7);
 s3 = addspecies(m, 'E1', 1.1e7);
 s4 = addspecies(m, 'E2', 0);
+
+% add parameters and their values
 p1 = addparameter(m, 'g1', 5.14e-1);
 p2 = addparameter(m, 'g2', 0.35*p1.get('Value'));
 p3 = addparameter(m, 'K1', 5e8);
@@ -23,6 +28,7 @@ p17 = addparameter(m, 'r3', 1.1e-7);
 p18 = addparameter(m, 's1', 2.02e7);
 p19 = addparameter(m, 's2', 2.02e7);
 
+% add equations
 r1 = addrule(m, 'T1=g1*T1*(1-(T1/K1))-a11*E1*T1-a12*E2*T1-c12*T1*T2', ...
     'RuleType', 'rate');
 r2 = addrule(m, 'T2=g2*T2*(1-(T2/K2))-a21*E1*T2-c21*T1*T2', ...
