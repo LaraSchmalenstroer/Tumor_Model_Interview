@@ -1,35 +1,38 @@
+load("parameters.mat")
+load('initial_conditions.mat')
+
 m = sbiomodel('Compartmental model');
 c1 = addcompartment(m, 'tumor');
 c2 = addcompartment(m, 'central');
 %test
 
 % add species and their initial values to the model 
-s1 = addspecies(c1, 'T1', 'InitialAmount', 8e7);
-s2 = addspecies(c1, 'T2', 'InitialAmount', 2e7);
-s3 = addspecies(c1, 'E1', 1.1e7);
-s4 = addspecies(c1, 'E2', 0);
+s1 = addspecies(c1, 'T1', 'InitialAmount', T1);
+s2 = addspecies(c1, 'T2', 'InitialAmount', T2);
+s3 = addspecies(c1, 'E1', E1);
+s4 = addspecies(c1, 'E2', E2);
 s5 = addspecies(c2, 'L', 5e7);
 
 % add parameters and their values
-p1 = addparameter(m, 'g1', 5.14e-1);
-p2 = addparameter(m, 'g2', 0.35*p1.get('Value'));
-p3 = addparameter(m, 'K1', 5e8);
-p4 = addparameter(m, 'K2', p3.get('Value'));
-p5 = addparameter(m, 'c12', 1.1e-9);
-p6 = addparameter(m, 'c21', 1.5*p5.get('Value'));
-p7 = addparameter(m, 'a11', 1.1e-7);
-p8 = addparameter(m, 'a12', 1.1e-10);
-p9 = addparameter(m, 'a21', p7.get('Value'));
-p10 = addparameter(m, 'p1', 1.3e4);
-p11 = addparameter(m, 'd1', 4.12e-2);
-p12 = addparameter(m, 'd2', 2e-2);
-p13 = addparameter(m, 'e1', 3.42e-10);
-p14 = addparameter(m, 'e2', 3.42e-10);
-p15 = addparameter(m, 'r1', 1.24e-1);
-p16 = addparameter(m, 'r2', 1.24e-3);
-p17 = addparameter(m, 'r3', 1.1e-7);
-p18 = addparameter(m, 's1', 2.02e7);
-p19 = addparameter(m, 's2', 2.02e7);
+p1 = addparameter(m, 'g1', g1);
+p2 = addparameter(m, 'g2', g2);
+p3 = addparameter(m, 'K1', K1);
+p4 = addparameter(m, 'K2', K2);
+p5 = addparameter(m, 'c12', c12);
+p6 = addparameter(m, 'c21', c21);
+p7 = addparameter(m, 'a11', a11);
+p8 = addparameter(m, 'a12', a12);
+p9 = addparameter(m, 'a21', a21);
+p10 = addparameter(m, 'p1', p1);
+p11 = addparameter(m, 'd1', d1);
+p12 = addparameter(m, 'd2', d2);
+p13 = addparameter(m, 'e1', e1);
+p14 = addparameter(m, 'e2', e2);
+p15 = addparameter(m, 'r1', r1);
+p16 = addparameter(m, 'r2', r2);
+p17 = addparameter(m, 'r3', r3);
+p18 = addparameter(m, 's1', s1);
+p19 = addparameter(m, 's2', s2);
 
 % add equations
 r1 = addrule(m, 'T1=g1*T1*(1-(T1/K1))-a11*E1*T1-a12*E2*T1-c12*T1*T2', ...
