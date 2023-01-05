@@ -1,7 +1,7 @@
 m = sbiomodel('Compartmental model');
 c1 = addcompartment(m, 'tumor');
 c2 = addcompartment(m, 'central');
-
+%test
 
 % add species and their initial values to the model 
 s1 = addspecies(c1, 'T1', 'InitialAmount', 8e7);
