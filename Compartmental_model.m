@@ -4,7 +4,6 @@ load('initial_conditions.mat')
 m = sbiomodel('Compartmental model');
 c1 = addcompartment(m, 'tumor');
 c2 = addcompartment(m, 'central');
-%test
 
 % add species and their initial values to the model 
 s1 = addspecies(c1, 'T1', 'InitialAmount', T1);
@@ -23,7 +22,7 @@ p6 = addparameter(m, 'c21', c21);
 p7 = addparameter(m, 'a11', a11);
 p8 = addparameter(m, 'a12', a12);
 p9 = addparameter(m, 'a21', a21);
-p10 = addparameter(m, 'p1', p1);
+p10 = addparameter(m, 'p1', p_1);
 p11 = addparameter(m, 'd1', d1);
 p12 = addparameter(m, 'd2', d2);
 p13 = addparameter(m, 'e1', e1);
@@ -31,8 +30,8 @@ p14 = addparameter(m, 'e2', e2);
 p15 = addparameter(m, 'r1', r1);
 p16 = addparameter(m, 'r2', r2);
 p17 = addparameter(m, 'r3', r3);
-p18 = addparameter(m, 's1', s1);
-p19 = addparameter(m, 's2', s2);
+p18 = addparameter(m, 's1', s_1);
+p19 = addparameter(m, 's2', s_2);
 
 % add equations
 r1 = addrule(m, 'T1=g1*T1*(1-(T1/K1))-a11*E1*T1-a12*E2*T1-c12*T1*T2', ...
@@ -56,8 +55,8 @@ xlabel('Time');
 ylabel('Amount species');
 
 %plot tumor vs. E1 cells
-tumor_total = sd(:,1) + sd(:,2);
-plot(sd(:,3), tumor_total);
-legend('tumor total')
-xlabel('Amount E1 cells');
-ylabel('Amount tumor cells');
+% tumor_total = sd(:,1) + sd(:,2);
+% plot(sd(:,3), tumor_total);
+% legend('tumor total')
+% xlabel('Amount E1 cells');
+% ylabel('Amount tumor cells');
